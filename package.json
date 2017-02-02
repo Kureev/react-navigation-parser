@@ -1,0 +1,8 @@
+{
+  "name": "react-native-storyboard",
+  "version": "1.0.0",
+  "description": "Storyboard tool for react-native",
+  "main": "index.js",
+  "author": "Alexey Kureev <a.g.kureev@gmail.com>",
+  "license": "MIT"
+}
