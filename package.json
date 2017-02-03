@@ -8,11 +8,15 @@
   "dependencies": {
     "babylon": "^6.15.0"
   },
+  "scripts": {
+    "test": "jest"
+  },
   "devDependencies": {
     "eslint": "^3.14.1",
     "eslint-config-airbnb": "latest",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^3.0.2",
-    "eslint-plugin-react": "^6.9.0"
+    "eslint-plugin-react": "^6.9.0",
+    "jest": "^18.1.0"
   }
 }
