@@ -31,7 +31,7 @@ module.exports = function resolveObjectExpression(objectExpressionNode, ast) {
       const declarations = [];
       walk.simple(ast, visitors, declarations);
       /**
-       * We assume that nobody re-declare variables, so declarations will
+       * We assume that nobody re-declare variables, so `declarations` will
        * always have only one element
        */
       objectProperties = objectProperties.concat(declarations[0].properties);

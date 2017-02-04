@@ -6,10 +6,6 @@ const t = require('babel-types');
 module.exports = function resolveObjectIdentifier(identifier, ast) {
   let objectProperties = [];
 
-  /**
-   * Properties of object expression can be spreads (i.e. ...something), so
-   * we need to check for them and if they exists, resolve them first.
-   */
   const visitors = {
     VariableDeclaration(node, target) {
       node.declarations.forEach((declaration) => {
@@ -29,7 +25,7 @@ module.exports = function resolveObjectIdentifier(identifier, ast) {
   const declarations = [];
   walk.simple(ast, visitors, declarations);
   /**
-   * We assume that nobody re-declare variables, so declarations will
+   * We assume that nobody re-declare variables, so `declarations` will
    * always have only one element
    */
   objectProperties = objectProperties.concat(declarations[0].properties);
