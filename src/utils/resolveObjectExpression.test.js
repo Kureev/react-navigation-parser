@@ -1,10 +1,6 @@
 const babylon = require('babylon');
 const resolveObjectExpression = require('./resolveObjectExpression');
-
-const babylonConfig = {
-  sourceType: 'module',
-  plugins: ['jsx', 'flow', 'objectRestSpread'],
-};
+const babylonConfig = require('../parser/babylon.conf');
 
 test('resolveObjectExpression() resolves nested spreads', () => {
   const code = `
