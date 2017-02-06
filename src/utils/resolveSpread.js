@@ -4,8 +4,6 @@ const t = require('babel-types');
 module.exports = function resolveSpread(spreadProperty, ast) {
   let properties = [];
 
-  // console.log(spreadProperty);
-
   const visitors = {
     VariableDeclaration(node) {
       node.declarations.forEach((declaration) => {

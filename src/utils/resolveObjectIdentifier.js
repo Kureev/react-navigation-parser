@@ -5,9 +5,9 @@ const t = require('babel-types');
  */
 module.exports = function resolveObjectIdentifier(identifier, ast) {
   let objectProperties = [];
-
+  const declarations = [];
   const visitors = {
-    VariableDeclaration(node, target) {
+    VariableDeclaration(node) {
       node.declarations.forEach((declaration) => {
         if (declaration.id.name === identifier.name) {
           t.assertObjectExpression(declaration.init);
@@ -16,14 +16,13 @@ module.exports = function resolveObjectIdentifier(identifier, ast) {
            * I don't take it into account.
            * @todo Recursively check for nested spreads
            */
-          target.push(declaration.init);
+          declarations.push(declaration.init);
         }
       });
     },
   };
 
-  const declarations = [];
-  walk.simple(ast, visitors, declarations);
+  walk.simple(ast, visitors);
   /**
    * We assume that nobody re-declare variables, so `declarations` will
    * always have only one element
