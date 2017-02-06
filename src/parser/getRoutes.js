@@ -1,32 +1,34 @@
 const babylon = require('babylon');
 const walk = require('babylon-walk');
 const t = require('babel-types');
+const babylonConfig = require('./babylon.conf');
 const resolveObjectExpression = require('../utils/resolveObjectExpression');
 const resolveObjectIdentifier = require('../utils/resolveObjectIdentifier');
 
-const babylonConfig = {
-  sourceType: 'module',
-  plugins: ['jsx', 'flow', 'objectRestSpread'],
-};
-
-const visitors = {
-  CallExpression(node, acc) {
-    if (node.callee.name === 'StackNavigator') {
-      acc.push(node);
-    }
-  },
-};
+const navigatorsList = [
+  'StackNavigator',
+  'TabNavigator',
+  'DrawerNavigator',
+];
 
 module.exports = function getRoutes(fileContent) {
   const nodes = [];
   const ast = babylon.parse(fileContent, babylonConfig);
+
+  const visitors = {
+    CallExpression(node) {
+      if (navigatorsList.indexOf(node.callee.name) > -1) {
+        nodes.push(node);
+      }
+    },
+  };
 
   /**
    * First we walk through the file AST to find a call expression(s) that
    * creates a StackNavigator instance. (@todo Change it to all possible navigators)
    * All call expressions are collected in `nodes` array.
    */
-  walk.simple(ast, visitors, nodes);
+  walk.simple(ast, visitors);
 
   /**
    * Once we have all call expressions in array, we can get their arguments (e.g. routes)
