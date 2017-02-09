@@ -1,4 +1,5 @@
 const exec = require('child_process').execSync;
+const path = require('path');
 const fs = require('fs');
 const getRoutes = require('./getRoutes');
 const isNavigationContainer = require('./isNavigationContainer');
@@ -21,7 +22,12 @@ module.exports = function parse(projectRoot, options = {}) {
     const fileContent = fs.readFileSync(file, 'utf8');
     const isContainer = isNavigationContainer(fileContent);
     if (isContainer) {
-      results.push({ file, routes: getRoutes(fileContent) });
+      const routes = getRoutes(fileContent)
+        .map(({ name, value }) => {
+          const resolvedValue = path.resolve(path.dirname(file), value);
+          return { name, value: `${resolvedValue}.js` };
+        });
+      results.push({ file, routes });
     }
   });
 

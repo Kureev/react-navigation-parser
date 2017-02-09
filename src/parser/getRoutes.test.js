@@ -7,7 +7,7 @@ describe('getRoutes with various input sources', () => {
     const filename = path.join(__dirname, 'fixtures/routesByObjectLiteral.js');
     const fileContent = fs.readFileSync(filename, 'utf8');
     const routes = getRoutes(fileContent);
-    const names = routes.map(r => r.key.name);
+    const names = routes.map(({ name }) => name);
     expect(JSON.stringify(names)).toBe(
       JSON.stringify([
         'SimpleStack',
@@ -27,7 +27,7 @@ describe('getRoutes with various input sources', () => {
     const filename = path.join(__dirname, 'fixtures/routesByIdentifier.js');
     const fileContent = fs.readFileSync(filename, 'utf8');
     const routes = getRoutes(fileContent);
-    const names = routes.map(r => r.key.name);
+    const names = routes.map(({ name }) => name);
     expect(JSON.stringify(names)).toBe(
       JSON.stringify([
         'SimpleStack',

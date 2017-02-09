@@ -2,6 +2,7 @@ const babylon = require('babylon');
 const walk = require('babylon-walk');
 const t = require('babel-types');
 const babylonConfig = require('./babylon.conf');
+const resolveRoute = require('./resolveRoute');
 const resolveObjectExpression = require('../utils/resolveObjectExpression');
 const resolveObjectIdentifier = require('../utils/resolveObjectIdentifier');
 
@@ -47,6 +48,8 @@ module.exports = function getRoutes(fileContent) {
   } else if (t.isIdentifier(firstArg)) {
     resolvedRoutes = resolveObjectIdentifier(firstArg, ast);
   }
+
+  resolvedRoutes = resolvedRoutes.map(route => resolveRoute(route, ast));
 
   return resolvedRoutes;
 };
