@@ -6,7 +6,4 @@ const projectRoot = path.resolve(__dirname, args[0]);
 
 const results = parse(projectRoot);
 
-results.forEach(({ file, routes }) => {
-  console.log(`\n\nFile ${file} has following routes:`);
-  routes.forEach(route => console.log(route));
-});
+console.log(JSON.stringify(results));
