@@ -5,6 +5,9 @@
   "main": "index.js",
   "author": "Alexey Kureev <a.g.kureev@gmail.com>",
   "license": "MIT",
+  "bin": {
+    "parse-navigation": "./cli/index.js"
+  },
   "dependencies": {
     "babel-types": "^6.22.0",
     "babylon": "^6.15.0",
