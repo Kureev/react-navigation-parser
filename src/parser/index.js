@@ -5,6 +5,9 @@ const getRoutes = require('./getRoutes');
 const isNavigationContainer = require('./isNavigationContainer');
 
 module.exports = function parse(projectRoot, options = {}) {
+  /**
+   * @todo Add support for Windows
+   */
   let cmd = `find ${projectRoot} -name "*.js" -not -path "*node_modules*"`;
   if (options.exclude && Array.isArray(options.exclude)) {
     cmd += options.exclude
@@ -30,11 +33,10 @@ module.exports = function parse(projectRoot, options = {}) {
      */
     if (isContainer) {
       containers.push(file);
-      const routes = getRoutes(fileContent)
-        .map(({ name, value }) => {
-          const resolvedValue = path.join(path.dirname(file), value);
-          return { name, value: `${resolvedValue}.js` };
-        });
+      const routes = getRoutes(fileContent).map(({ name, value }) => {
+        const resolvedValue = path.join(path.dirname(file), value);
+        return { name, value: `${resolvedValue}.js` };
+      });
       results[file] = { routes };
     }
   });
