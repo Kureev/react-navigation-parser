@@ -1,6 +1,12 @@
 const walk = require('babylon-walk');
 const t = require('babel-types');
 
+/**
+ * This parser doesn't support constructions like
+ * export default const Foo = class extends Component or similar
+ * If you want to help this project - please, submit a PR
+ */
+
 module.exports = function getComponents(ast) {
   let defaultExportNode;
   let importsReact = false;
