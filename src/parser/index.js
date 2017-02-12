@@ -5,6 +5,7 @@ const babylon = require('babylon');
 const babylonConfig = require('./babylon.conf');
 const getRoutes = require('./getRoutes');
 const getComponentName = require('./getComponentName');
+const getTransitions = require('./getTransitions');
 const isNavigationContainer = require('./isNavigationContainer');
 
 module.exports = function parse(projectRoot, options = {}) {
@@ -33,6 +34,10 @@ module.exports = function parse(projectRoot, options = {}) {
     const isContainer = isNavigationContainer(fileContent);
     const ast = babylon.parse(fileContent, babylonConfig);
     const component = getComponentName(ast);
+    let transitions = [];
+    if (component) {
+      transitions = getTransitions(ast);
+    }
     /**
      * If so, get container's routes and store them to the result object
      */
@@ -45,9 +50,9 @@ module.exports = function parse(projectRoot, options = {}) {
         const resolvedValue = path.join(path.dirname(file), value);
         return { name, value: `${resolvedValue}.js` };
       });
-      results[file] = { navigationType, routes, component };
+      results[file] = { navigationType, routes, component, transitions };
     } else if (component) {
-      results[file] = { component };
+      results[file] = { component, transitions };
     }
   });
 
