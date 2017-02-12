@@ -14,7 +14,6 @@ function hasNavigationSignature(args) {
 
 module.exports = function getTransitions(ast) {
   const transitions = [];
-
   const visitors = {
     CallExpression(node) {
       const args = node.arguments;

@@ -23,7 +23,11 @@ module.exports = function parse(projectRoot, options = {}) {
     .split('\n')
     .slice(0, -1);
 
-  const results = {};
+  const results = {
+    containers: {},
+    components: {},
+    routes: {},
+  };
   const containers = [];
 
   /**
@@ -47,12 +51,12 @@ module.exports = function parse(projectRoot, options = {}) {
       const { navigationType } = routesObj;
       let { routes } = routesObj;
       routes = routes.map(({ name, value }) => {
-        const resolvedValue = path.join(path.dirname(file), value);
-        return { name, value: `${resolvedValue}.js` };
+        results.routes[name] = path.join(path.dirname(file), value) + path.extname(file);
+        return { name, value: results.routes[name] };
       });
-      results[file] = { navigationType, routes, component, transitions };
+      results.containers[file] = { navigationType, routes, component, transitions };
     } else if (component) {
-      results[file] = { component, transitions };
+      results.components[file] = { component, transitions };
     }
   });
 
