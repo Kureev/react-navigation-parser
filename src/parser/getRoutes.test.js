@@ -1,12 +1,15 @@
 const getRoutes = require('./getRoutes');
 const fs = require('fs');
 const path = require('path');
+const babylon = require('babylon');
+const babylonConfig = require('./babylon.conf');
 
 describe('getRoutes with various input sources', () => {
   it('getRoutes gets a list of app routes (object literal)', () => {
     const filename = path.join(__dirname, 'fixtures/routesByObjectLiteral.js');
     const fileContent = fs.readFileSync(filename, 'utf8');
-    const routes = getRoutes(fileContent);
+    const ast = babylon.parse(fileContent, babylonConfig);
+    const { routes } = getRoutes(ast);
     const names = routes.map(({ name }) => name);
     expect(JSON.stringify(names)).toBe(
       JSON.stringify([
@@ -26,7 +29,8 @@ describe('getRoutes with various input sources', () => {
   it('getRoutes gets a list of app routes (identifier)', () => {
     const filename = path.join(__dirname, 'fixtures/routesByIdentifier.js');
     const fileContent = fs.readFileSync(filename, 'utf8');
-    const routes = getRoutes(fileContent);
+    const ast = babylon.parse(fileContent, babylonConfig);
+    const { routes } = getRoutes(ast);
     const names = routes.map(({ name }) => name);
     expect(JSON.stringify(names)).toBe(
       JSON.stringify([

@@ -1,7 +1,10 @@
 const exec = require('child_process').execSync;
 const path = require('path');
 const fs = require('fs');
+const babylon = require('babylon');
+const babylonConfig = require('./babylon.conf');
 const getRoutes = require('./getRoutes');
+const getComponentName = require('./getComponentName');
 const isNavigationContainer = require('./isNavigationContainer');
 
 module.exports = function parse(projectRoot, options = {}) {
@@ -28,16 +31,23 @@ module.exports = function parse(projectRoot, options = {}) {
   jsFiles.forEach((file) => {
     const fileContent = fs.readFileSync(file, 'utf8');
     const isContainer = isNavigationContainer(fileContent);
+    const ast = babylon.parse(fileContent, babylonConfig);
+    const component = getComponentName(ast);
     /**
      * If so, get container's routes and store them to the result object
      */
     if (isContainer) {
       containers.push(file);
-      const routes = getRoutes(fileContent).map(({ name, value }) => {
+      const routesObj = getRoutes(ast);
+      const { navigationType } = routesObj;
+      let { routes } = routesObj;
+      routes = routes.map(({ name, value }) => {
         const resolvedValue = path.join(path.dirname(file), value);
         return { name, value: `${resolvedValue}.js` };
       });
-      results[file] = { routes };
+      results[file] = { navigationType, routes, component };
+    } else if (component) {
+      results[file] = { component };
     }
   });
 
@@ -48,6 +58,9 @@ module.exports = function parse(projectRoot, options = {}) {
    * refers to other navigator.
    */
   Object.keys(results).forEach((r) => {
+    if (!results[r].routes) {
+      return;
+    }
     results[r].routes.forEach((route) => {
       const matches = containers.filter(c => c === route.value);
       if (matches.length) {

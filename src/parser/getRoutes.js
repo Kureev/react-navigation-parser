@@ -1,7 +1,5 @@
-const babylon = require('babylon');
 const walk = require('babylon-walk');
 const t = require('babel-types');
-const babylonConfig = require('./babylon.conf');
 const resolveRoute = require('./resolveRoute');
 const resolveObjectExpression = require('../utils/resolveObjectExpression');
 const resolveObjectIdentifier = require('../utils/resolveObjectIdentifier');
@@ -12,13 +10,15 @@ const navigatorsList = [
   'DrawerNavigator',
 ];
 
-module.exports = function getRoutes(fileContent) {
+module.exports = function getRoutes(ast) {
   const nodes = [];
-  const ast = babylon.parse(fileContent, babylonConfig);
+  let navigationType;
 
   const visitors = {
     CallExpression(node) {
-      if (navigatorsList.indexOf(node.callee.name) > -1) {
+      const navigatorIndex = navigatorsList.indexOf(node.callee.name);
+      if (navigatorIndex > -1) {
+        navigationType = navigatorsList[navigatorIndex];
         nodes.push(node);
       }
     },
@@ -42,14 +42,14 @@ module.exports = function getRoutes(fileContent) {
   /**
    * Routes can be passed as object expression or a variable. We need to handle both cases:
    */
-  let resolvedRoutes;
+  let routes;
   if (t.isObjectExpression(firstArg)) {
-    resolvedRoutes = resolveObjectExpression(firstArg, ast);
+    routes = resolveObjectExpression(firstArg, ast);
   } else if (t.isIdentifier(firstArg)) {
-    resolvedRoutes = resolveObjectIdentifier(firstArg, ast);
+    routes = resolveObjectIdentifier(firstArg, ast);
   }
 
-  resolvedRoutes = resolvedRoutes.map(route => resolveRoute(route, ast));
+  routes = routes.map(route => resolveRoute(route, ast));
 
-  return resolvedRoutes;
+  return { navigationType, routes };
 };
