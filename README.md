@@ -17,7 +17,7 @@ $ parse-navigation path/to/react-navigation-project
 
 Example
 ----
-For the [PocketGear](https://github.com/satya164/PocketGear) project, tool gives a following output:
+For the [PocketGear](https://github.com/satya164/PocketGear) project, tool gives the following output:
 <details>
 ```json
 {  
