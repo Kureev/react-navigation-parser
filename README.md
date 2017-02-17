@@ -10,9 +10,14 @@ $ npm i git@github.com:Kureev/react-navigation-parser.git -g
 ```
 
 - Download any react-native project, using react-navigation
-- Run `parse-navigation`:
+- Run `parse-navigation` CLI:
 ```bash
 $ parse-navigation path/to/react-navigation-project
+```
+or use it via JS API:
+```js
+const parser = require('react-navigation-parser');
+const result = parse('project/folder');
 ```
 
 Example
