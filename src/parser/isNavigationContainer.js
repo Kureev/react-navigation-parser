@@ -1,12 +1,18 @@
 const babylon = require('babylon');
-const t = require('babel-types');
-const filterByImportSource = require('../utils/filterByImportSource');
+const walk = require('babylon-walk');
 const babylonConfig = require('./babylon.conf');
 
 module.exports = function isNavigationContainer(fileContent) {
-  return babylon.parse(fileContent, babylonConfig)
-    .program.body
-    .filter(t.isImportDeclaration)
-    .filter(filterByImportSource('react-navigation'))
-    .length > 0;
+  let isContainer = false;
+  const ast = babylon.parse(fileContent, babylonConfig);
+
+  walk.simple(ast, {
+    ImportDeclaration(node) {
+      if (node.source.value === 'react-navigation') {
+        isContainer = true;
+      }
+    },
+  });
+
+  return isContainer;
 };
