@@ -20,210 +20,168 @@ Example
 For the [PocketGear](https://github.com/satya164/PocketGear) project, tool gives the following output:
 <details>
 ```json
-{  
-  "containers":{  
-    "/Users/<username>/PocketGear/src/components/Home.js":{  
+{
+  "containers":{
+    "/Users/<username>/PocketGear/src/components/Home.js":{
       "navigationType":"StackNavigator",
-      "routes":[  
-        {  
+      "routes":[
+        {
           "name":"Main",
           "value":"/Users/<username>/PocketGear/src/components/PokemonChooser.js"
         },
-        {  
+        {
           "name":"StrongAgainst",
           "value":"/Users/<username>/PocketGear/src/components/StrongAgainstList.js"
         },
-        {  
+        {
           "name":"WeakAgainst",
           "value":"/Users/<username>/PocketGear/src/components/WeakAgainstList.js"
         },
-        {  
+        {
           "name":"Info",
           "value":"/Users/<username>/PocketGear/src/components/PokemonInfo.js"
         }
       ],
       "component":null,
-      "transitions":[  
-
-      ]
+      "transitions":[]
     },
-    "/Users/<username>/PocketGear/src/components/PokemonInfo.js":{  
+    "/Users/<username>/PocketGear/src/components/PokemonInfo.js":{
       "navigationType":"TabNavigator",
-      "routes":[  
-        {  
+      "routes":[
+        {
           "name":"Details",
           "value":"/Users/<username>/PocketGear/src/components/PokemonDetails.js"
         },
-        {  
+        {
           "name":"Matches",
           "value":"/Users/<username>/PocketGear/src/components/PokemonMatches.js"
         },
-        {  
+        {
           "name":"Tools",
           "value":"/Users/<username>/PocketGear/src/components/PokemonTools.js"
         }
       ],
       "component":"PokemonInfo",
-      "transitions":[  
-
-      ]
+      "transitions":[]
     }
   },
-  "components":{  
-    "/Users/<username>/PocketGear/src/components/Appbar.js":{  
+  "components":{
+    "/Users/<username>/PocketGear/src/components/Appbar.js":{
       "component":"Appbar",
-      "transitions":[  
-
-      ]
+      "transitions":[]
     },
-    "/Users/<username>/PocketGear/src/components/AppbarShell.js":{  
+    "/Users/<username>/PocketGear/src/components/AppbarShell.js":{
       "component":"AppbarShell",
-      "transitions":[  
-
-      ]
+      "transitions":[]
     },
-    "/Users/<username>/PocketGear/src/components/Attack.js":{  
+    "/Users/<username>/PocketGear/src/components/Attack.js":{
       "component":"Attack",
-      "transitions":[  
-
-      ]
+      "transitions":[]
     },
-    "/Users/<username>/PocketGear/src/components/CPCalculator.js":{  
+    "/Users/<username>/PocketGear/src/components/CPCalculator.js":{
       "component":"CPCalculator",
-      "transitions":[  
+      "transitions":[
         "Info"
       ]
     },
-    "/Users/<username>/PocketGear/src/components/Evolution.js":{  
+    "/Users/<username>/PocketGear/src/components/Evolution.js":{
       "component":"Evolution",
-      "transitions":[  
+      "transitions":[
         "Info"
       ]
     },
-    "/Users/<username>/PocketGear/src/components/GridView.js":{  
+    "/Users/<username>/PocketGear/src/components/GridView.js":{
       "component":"GridView",
-      "transitions":[  
-
-      ]
+      "transitions":[]
     },
-    "/Users/<username>/PocketGear/src/components/Heading.js":{  
+    "/Users/<username>/PocketGear/src/components/Heading.js":{
       "component":"Heading",
-      "transitions":[  
-
-      ]
+      "transitions":[]
     },
-    "/Users/<username>/PocketGear/src/components/More.js":{  
+    "/Users/<username>/PocketGear/src/components/More.js":{
       "component":"More",
-      "transitions":[  
-
-      ]
+      "transitions":[]
     },
-    "/Users/<username>/PocketGear/src/components/NoResults.js":{  
+    "/Users/<username>/PocketGear/src/components/NoResults.js":{
       "component":"NoResults",
-      "transitions":[  
-
-      ]
+      "transitions":[]
     },
-    "/Users/<username>/PocketGear/src/components/Paragraph.js":{  
+    "/Users/<username>/PocketGear/src/components/Paragraph.js":{
       "component":"Paragraph",
-      "transitions":[  
-
-      ]
+      "transitions":[]
     },
-    "/Users/<username>/PocketGear/src/components/Placeholder.js":{  
+    "/Users/<username>/PocketGear/src/components/Placeholder.js":{
       "component":"Placeholder",
-      "transitions":[  
-
-      ]
+      "transitions":[]
     },
-    "/Users/<username>/PocketGear/src/components/PokemonChooser.js":{  
+    "/Users/<username>/PocketGear/src/components/PokemonChooser.js":{
       "component":"PokemonChooser",
-      "transitions":[  
-
-      ]
+      "transitions":[]
     },
-    "/Users/<username>/PocketGear/src/components/PokemonDetails.js":{  
+    "/Users/<username>/PocketGear/src/components/PokemonDetails.js":{
       "component":"PokemonDetails",
-      "transitions":[  
+      "transitions":[
         "Info"
       ]
     },
-    "/Users/<username>/PocketGear/src/components/PokemonList.js":{  
+    "/Users/<username>/PocketGear/src/components/PokemonList.js":{
       "component":"PokemonList",
-      "transitions":[  
-
-      ]
+      "transitions":[]
     },
-    "/Users/<username>/PocketGear/src/components/PokemonListCard.js":{  
+    "/Users/<username>/PocketGear/src/components/PokemonListCard.js":{
       "component":"PokemonListCard",
-      "transitions":[  
+      "transitions":[
         "Info"
       ]
     },
-    "/Users/<username>/PocketGear/src/components/PokemonMatches.js":{  
+    "/Users/<username>/PocketGear/src/components/PokemonMatches.js":{
       "component":"PokemonMatches",
-      "transitions":[  
+      "transitions":[
         "Info",
         "StrongAgainst",
         "WeakAgainst"
       ]
     },
-    "/Users/<username>/PocketGear/src/components/PokemonTools.js":{  
+    "/Users/<username>/PocketGear/src/components/PokemonTools.js":{
       "component":"PokemonTools",
-      "transitions":[  
+      "transitions":[
         "Info"
       ]
     },
-    "/Users/<username>/PocketGear/src/components/PokemonTypeLabel.js":{  
+    "/Users/<username>/PocketGear/src/components/PokemonTypeLabel.js":{
       "component":"PokemonTypeLabel",
-      "transitions":[  
-
-      ]
+      "transitions":[]
     },
-    "/Users/<username>/PocketGear/src/components/ProgressBar.js":{  
+    "/Users/<username>/PocketGear/src/components/ProgressBar.js":{
       "component":"ProgressBar",
-      "transitions":[  
-
-      ]
+      "transitions":[]
     },
-    "/Users/<username>/PocketGear/src/components/SearchBar.js":{  
+    "/Users/<username>/PocketGear/src/components/SearchBar.js":{
       "component":"SearchBar",
-      "transitions":[  
-
-      ]
+      "transitions":[]
     },
-    "/Users/<username>/PocketGear/src/components/SpinButton.js":{  
+    "/Users/<username>/PocketGear/src/components/SpinButton.js":{
       "component":"SpinButton",
-      "transitions":[  
-
-      ]
+      "transitions":[]
     },
-    "/Users/<username>/PocketGear/src/components/StrongAgainstList.js":{  
+    "/Users/<username>/PocketGear/src/components/StrongAgainstList.js":{
       "component":"StrongAgainstList",
-      "transitions":[  
-
-      ]
+      "transitions":[]
     },
-    "/Users/<username>/PocketGear/src/components/TouchableButton.js":{  
+    "/Users/<username>/PocketGear/src/components/TouchableButton.js":{
       "component":"TouchableButton",
-      "transitions":[  
-
-      ]
+      "transitions":[]
     },
-    "/Users/<username>/PocketGear/src/components/TouchableItem.js":{  
+    "/Users/<username>/PocketGear/src/components/TouchableItem.js":{
       "component":"TouchableItem",
-      "transitions":[  
-
-      ]
+      "transitions":[]
     },
-    "/Users/<username>/PocketGear/src/components/WeakAgainstList.js":{  
+    "/Users/<username>/PocketGear/src/components/WeakAgainstList.js":{
       "component":"WeakAgainstList",
-      "transitions":[  
-
-      ]
+      "transitions":[]
     }
   },
-  "routes":{  
+  "routes":{
     "Main":"/Users/<username>/PocketGear/src/components/PokemonChooser.js",
     "StrongAgainst":"/Users/<username>/PocketGear/src/components/StrongAgainstList.js",
     "WeakAgainst":"/Users/<username>/PocketGear/src/components/WeakAgainstList.js",
