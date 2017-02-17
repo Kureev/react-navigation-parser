@@ -61,8 +61,8 @@ module.exports = function parse(projectRoot, options = {}) {
   });
 
   /**
-   * Once we have object with navigators and related routes,
-   * we need to build a hierarchy. Some navigators can be nested,
+   * Once we have an object with navigators and related routes,
+   * it's time to build a hierarchy. Some navigators can be nested,
    * so we loop over our `results` hash to check if any of the routes
    * refers to other navigator.
    */
