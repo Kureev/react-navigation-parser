@@ -55,5 +55,15 @@ module.exports = function getComponents(ast) {
     return defaultExportNode.name;
   }
 
+  if (t.isCallExpression(defaultExportNode)) {
+    if (defaultExportNode.callee.callee.name === 'connect') {
+      return defaultExportNode.arguments[0].name;
+    }
+  }
+
+  if (t.isArrowFunctionExpression(defaultExportNode)) {
+    return '';
+  }
+
   return defaultExportNode.id.name;
 };

@@ -22,6 +22,12 @@ describe('getComponentName with various input sources', () => {
     expect(name).toBe('Foo');
   });
 
+  it('export default () => {}', () => {
+    const filename = path.join(__dirname, 'fixtures/exportDefaultArrow.js');
+    const name = getComponentName(getAST(filename));
+    expect(name).toBe('');
+  });
+
   it('export default function Foo() {}', () => {
     const filename = path.join(__dirname, 'fixtures/exportDefaultStateless.js');
     const name = getComponentName(getAST(filename));
