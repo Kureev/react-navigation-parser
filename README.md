@@ -198,3 +198,19 @@ For the [PocketGear](https://github.com/satya164/PocketGear) project, tool gives
 }
 ```
 </details>
+
+Capabilities
+----
+- Detect navigation containers with routes
+  - StackNavigator
+  - DrawerNavigator
+  - TabNavigator
+- Detect components
+  - `export default () => {}`
+  - `export default function Foo() {}`
+  - `export default Foo` where `Foo` is a class that extends `React.Component`
+  - `export default class Foo extends React.Component`
+  - `export default connect(x, y)(Foo)`
+- Detect transitions
+  - `this.props.navigate('route', config)`
+  - `navigate('route', config)`
