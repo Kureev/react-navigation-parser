@@ -1,5 +1,7 @@
 Tiny parser for react-navigation based projects
 ----
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/Kureev/react-navigation-parser.svg)](https://greenkeeper.io/)
 Parse react-navigation based project to find containers, routes, transitions etc.
 
 Getting started
